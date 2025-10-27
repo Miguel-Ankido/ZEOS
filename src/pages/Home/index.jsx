@@ -14,7 +14,7 @@ function Home() {
 
   useEffect(() => {
     // A porta 8080 é onde seu `json-server` (npm run api) está rodando
-    const API_URL = 'http://localhost:8080'; 
+    const API_URL = 'https://api-1-6p1t.onrender.com'; 
 
     async function fetchData() {
       try {
