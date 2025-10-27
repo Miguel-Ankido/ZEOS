@@ -1,0 +1,16 @@
+/* Remove margens e paddings padrões */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  font-family: Arial, sans-serif;
+  
+  /* ESTA É A LINHA MAIS IMPORTANTE */
+  /* Define o fundo da página como um cinza mais escuro */
+  background-color: #f0f0f0; 
+}

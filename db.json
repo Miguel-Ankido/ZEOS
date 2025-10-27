@@ -1,0 +1,18 @@
+{
+  "produtos": [
+    { "id": "1", "name": "Camisa Chico Moedas Preto", "price": "149,90", "image": "/images/cavalo-removebg-preview.png" },
+    { "id": "2", "name": "Camisa Eos", "price": "160,00", "image": "/images/cavalo-removebg-preview.png" },
+    { "id": "3", "name": "Camisa BrBrr Brr Patapim", "price": "189,00", "image": "/images/cavalo-removebg-preview.png" },
+    { "id": "4", "name": "Camisa Educação Física Não É Só Futebol", "price": "140,00", "image": "/images/cavalo-removebg-preview.png" },
+    { "id": "5", "name": "Camisa Eu Faço Programa", "price": "197,99", "image": "/images/cavalo-removebg-preview.png" },
+    { "id": "6", "name": "Camiseta Zeos", "price": "169,00", "image": "/images/cavalo-removebg-preview.png" },
+    { "id": "7", "name": "Camisa Tropa da Fidelidade", "price": "197,99", "image": "/images/cavalo-removebg-preview.png" },
+    { "id": "8", "name": "Camisa Do R10", "price": "94,00", "image": "/images/cavalo-removebg-preview.png" }
+  ],
+  "novidades": [
+    { "id": "9", "name": "Camisa Eos", "oldPrice": "239,99", "price": "160,00", "image": "/images/cavalo-removebg-preview.png" },
+    { "id": "10", "name": "Camiseta Zeos", "oldPrice": "239,99", "price": "189,00", "image": "/images/cavalo-removebg-preview.png" },
+    { "id": "11", "name": "Camiseta Treina Fofo", "oldPrice": "239,99", "price": "169,00", "image": "/images/cavalo-removebg-preview.png" },
+    { "id": "12", "name": "Camiseta Ñ Queria Ter Vindo", "oldPrice": "239,99", "price": "189,00", "image": "/images/cavalo-removebg-preview.png" }
+  ]
+}

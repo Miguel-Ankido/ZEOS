@@ -1,0 +1,57 @@
+.error-container {
+  /* Layout */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  /* Tamanho */
+  /* Faz o container ocupar pelo menos 60% da altura da tela,
+     para que o conteúdo fique bem centralizado verticalmente */
+  min-height: 60vh; 
+  padding: 40px 20px;
+  
+  /* Texto */
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+.error-code {
+  font-size: 6rem; /* 96px */
+  font-weight: 700;
+  color: #333;
+  margin: 0;
+}
+
+.error-title {
+  font-size: 1.75rem; /* 28px */
+  color: #555;
+  margin-top: -10px; /* Puxa o título para perto do "404" */
+  margin-bottom: 20px;
+}
+
+.error-message {
+  font-size: 1rem; /* 16px */
+  color: #777;
+  max-width: 400px;
+  margin-bottom: 30px;
+}
+
+.home-button {
+  /* Aparência de botão */
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #222; /* Cor de fundo escura */
+  color: #fff; /* Texto branco */
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none; /* Remove o sublinhado do link */
+  border-radius: 6px;
+  
+  /* Efeito de transição */
+  transition: background-color 0.2s ease;
+}
+
+.home-button:hover {
+  background-color: #555; /* Cor um pouco mais clara ao passar o mouse */
+}
