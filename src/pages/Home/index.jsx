@@ -56,12 +56,12 @@ function Home() {
     return (
       <div className="container home-status">
         <h2>Erro ao carregar produtos: {error}</h2>
-        <p>Verifique se sua API (json-server) está rodando com `npm run api`</p>
+        <p>Erro em API (json-server)</p>
       </div>
     );
   }
 
-  // Renderiza as duas listas quando os dados chegam
+
   return (
     <div className="container">
       <ProductList 
