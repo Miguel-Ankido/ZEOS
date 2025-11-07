@@ -1,4 +1,7 @@
 {
+  "users": [
+    { "id": 1, "email": "teste@teste.com", "password": "123" }
+  ],
   "produtos": [
     { "id": "1", "name": "Camisa Chico Moedas Preto", "price": "149,90", "image": 
   "/images/Camisa-chico.png" },

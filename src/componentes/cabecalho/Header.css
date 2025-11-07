@@ -109,3 +109,30 @@
 }
 
 /* ... (resto do .header-top, .search-bar, etc) ... */
+
+/* ... (todo o seu CSS anterior) ... */
+
+.header-actions {
+  /* ... (gap, align-items, etc.) ... */
+  font-size: 1rem; /* Aumenta um pouco o tamanho para o ícone */
+}
+
+/* Estiliza os links de ação (Usuário, Carrinho) */
+.action-link {
+  display: flex;
+  align-items: center;
+  gap: 6px; /* Espaço entre o ícone e o texto */
+  text-decoration: none;
+  color: #555;
+  transition: color 0.2s;
+}
+
+.action-link:hover {
+  color: #000;
+}
+
+/* Ajusta o tamanho do ícone (o "span" do texto já pega
+   o font-size do .header-actions) */
+.action-link svg {
+  font-size: 1.1rem; /* Tamanho do ícone */
+}
