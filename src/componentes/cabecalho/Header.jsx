@@ -1,7 +1,4 @@
-import React from 'react';
 import './Header.css';
-// 1. Importe os ícones que você quer.
-//    "Fa" é de "Font Awesome".
 import { FaUser, FaShoppingCart } from 'react-icons/fa';
 
 function Header() {
@@ -22,18 +19,23 @@ function Header() {
         
        
         <div className="header-actions">
-          <a href="/minha-conta" className="action-link" alt="Perfil">
+          <a href="/perfil" className="action-link">
             <FaUser />
-            <span></span>
+           
           </a>
-          <a href="/carrinho" className="action-link" alt="Carrinho de Compras">
+
+          <a href="/carrinho" className="action-link">
             <FaShoppingCart />
-            <span></span>
           </a>
         </div>
       </div>
       
-      {/* ... (resto do seu header-nav) ... */}
+      <nav className="header-nav">
+        <a href="/">Home</a>
+        <a href="/sobre">Sobre</a>
+        <a href="/loja">Loja</a>
+        <a href="/ajuda">Ajuda</a>
+      </nav>
     </header>
   );
 }

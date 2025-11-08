@@ -6,6 +6,11 @@
   font-family: Arial, sans-serif;
 }
 
+.product-card-link {
+  text-decoration: none; /* Remove o sublinhado */
+  color: inherit; /* Herda a cor do texto (preto/cinza) */
+}
+
 .product-image {
   width: 100%;
   aspect-ratio: 1 / 1; /* Força a imagem a ser quadrada */

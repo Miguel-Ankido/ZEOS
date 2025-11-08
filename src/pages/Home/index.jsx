@@ -1,9 +1,5 @@
 import React, { useState, useEffect } from 'react';
-// 1. Importa o CSS da Home
 import './index.css'; 
-
-// 2. Importa o componente de Lista
-// (O caminho sobe 2 níveis: 'index.jsx' -> 'Home' -> 'pages' e entra em 'componentes')
 import ProductList from '../../componentes/produtolist/ProductList.jsx';
 
 function Home() {
@@ -13,25 +9,38 @@ function Home() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // A porta 8080 é onde seu `json-server` (npm run api) está rodando
     const API_URL = 'https://api-1-6p1t.onrender.com'; 
 
     async function fetchData() {
       try {
-        const [produtosResponse, novidadesResponse] = await Promise.all([
-          fetch(`${API_URL}/produtos`),
-          fetch(`${API_URL}/novidades`)
-        ]);
-
-        if (!produtosResponse.ok || !novidadesResponse.ok) {
+        
+     
+        const response = await fetch(`${API_URL}/produtos`);
+        
+        if (!response.ok) {
           throw new Error('Falha ao buscar dados da API');
         }
 
-        const produtosData = await produtosResponse.json();
-        const novidadesData = await novidadesResponse.json();
+        const allProducts = await response.json();
 
-        setNossosProdutos(produtosData);
-        setNovidades(novidadesData);
+        // 2. Agora, o JavaScript (React) vai separar a lista
+        const produtosNormais = [];
+        const produtosNovidade = [];
+
+        for (const product of allProducts) {
+          if (product.oldPrice === null) {
+            // Se oldPrice for null, é um "Nosso Produto"
+            produtosNormais.push(product);
+          } else {
+            // Se oldPrice tiver um valor, é uma "Novidade"
+            produtosNovidade.push(product);
+          }
+        }
+        
+        // 3. Atualizamos os estados com as listas separadas
+        setNossosProdutos(produtosNormais);
+        setNovidades(produtosNovidade);
+        // --- FIM DA CORREÇÃO ---
 
       } catch (err) {
         console.error("Erro ao buscar dados:", err);
@@ -42,7 +51,7 @@ function Home() {
     }
 
     fetchData();
-  }, []);
+  }, []); // O array vazio [] garante que isso rode só uma vez
 
   if (loading) {
     return (
@@ -56,14 +65,18 @@ function Home() {
     return (
       <div className="container home-status">
         <h2>Erro ao carregar produtos: {error}</h2>
-        <p>Erro em API (json-server)</p>
+        <p>Verifique se sua API no Render está no ar.</p>
       </div>
     );
   }
 
-
   return (
     <div className="container">
+      {/* Aviso: Se "Nossos Produtos" ainda ficar vazio,
+        é porque o deploy no Render AINDA não pegou
+        o seu db.json com "oldPrice": null.
+        Tente forçar o deploy no Render de novo.
+      */}
       <ProductList 
         title="Nossos Produtos" 
         products={nossosProdutos} 

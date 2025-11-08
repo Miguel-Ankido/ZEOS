@@ -39,8 +39,10 @@
   margin-bottom: 8px;
 }
 
+
 .cadastro-box input[type="email"],
-.cadastro-box input[type="password"] {
+.cadastro-box input[type="password"],
+.cadastro-box input[type="text"] { /* <-- ADICIONE/CONFIRME O type="text" */
   width: 100%;
   padding: 12px;
   font-size: 1rem;

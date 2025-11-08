@@ -1,0 +1,43 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 40px;
+  font-family: Arial, sans-serif;
+  flex-wrap: wrap; /* Permite que os números quebrem a linha */
+}
+
+/* 7. Mudei 'a' para '.page-link' para funcionar em <a> e <button> */
+.page-link, .page-dots {
+  padding: 8px 14px;
+  text-decoration: none;
+  color: #555;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.page-link:hover {
+  background-color: #f0f0f0;
+}
+
+.page-link.current {
+  background-color: #333;
+  color: #fff;
+  border-color: #333;
+  font-weight: bold;
+}
+
+/* 8. Estilo para botões desabilitados */
+.page-link:disabled {
+  color: #ccc;
+  border-color: #eee;
+  background-color: #f9f9f9;
+  cursor: not-allowed;
+}
+
+.page-dots {
+  border: none;
+}

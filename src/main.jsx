@@ -1,15 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom'; // 1. Importar o Roteador
-import App from './App.jsx'; // 2. Importar o App
+import { BrowserRouter } from 'react-router-dom';
+import { CartProvider } from './context/CartContext.jsx'; // 1. Importe o Provedor
+import App from './App.jsx';
 import './index.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    {/* 3. Envolver o <App /> com o <BrowserRouter> */}
     <BrowserRouter>
-      <App />
+      {/* 2. Embrulhe o App com o Provedor */}
+      <CartProvider> 
+        <App />
+      </CartProvider>
     </BrowserRouter>
   </React.StrictMode>
 );

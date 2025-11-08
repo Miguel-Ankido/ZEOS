@@ -131,8 +131,6 @@
   color: #000;
 }
 
-/* Ajusta o tamanho do ícone (o "span" do texto já pega
-   o font-size do .header-actions) */
 .action-link svg {
-  font-size: 1.1rem; /* Tamanho do ícone */
+  font-size: 1.5rem; /* Tamanho do ícone */
 }
