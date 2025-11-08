@@ -20,6 +20,7 @@ function AdminEditPage() {
         const response = await fetch(`${API_URL}/produtos`);
         const data = await response.json();
         setAllProducts(data);
+      // eslint-disable-next-line no-unused-vars
       } catch (error) {
         toast.error('Falha ao carregar lista de produtos.');
       }

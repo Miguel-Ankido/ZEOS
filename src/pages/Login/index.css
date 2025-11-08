@@ -78,24 +78,6 @@
   margin-bottom: 16px;
 }
 
-.remember-me {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.remember-me input[type="checkbox"] {
-  width: auto;
-  margin: 0;
-}
-
-.remember-me label {
-  font-weight: normal;
-  font-size: 0.9rem;
-  margin: 0;
-  color: #555;
-}
-
 .forgot-password {
   font-size: 0.9rem;
   color: #555;

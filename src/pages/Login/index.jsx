@@ -72,12 +72,7 @@ function LoginPage() {
           
           <div className="form-actions">
             <button type="submit" className="form-button">Acessar</button>
-            <div className="remember-me">
-              <input type="checkbox" id="remember" />
-              <label htmlFor="remember">Lembrar de Mim</label>
-            </div>
           </div>
-          
           <Link to="/esqueci-senha" className="forgot-password">
             Esqueceu sua senha?
           </Link>
