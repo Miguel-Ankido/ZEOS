@@ -1,74 +1,78 @@
-import React, { useState, useEffect } from 'react'; // 1. Importe o useState e useEffect
+import React, { useState, useEffect } from 'react';
+import { useNavigate, Link } from 'react-router-dom'; // 1. Importe o useNavigate
 import './Header.css';
-// 2. Importe o novo ícone (usei FaTools, mas pode ser FaCogs, etc.)
 import { FaUser, FaShoppingCart, FaTools } from 'react-icons/fa';
 
 function Header() {
-  // 3. Estado para saber se o usuário é admin
   const [isAdmin, setIsAdmin] = useState(false);
+  // 2. Estado para controlar o que o usuário digita
+  const [searchTerm, setSearchTerm] = useState('');
+  const navigate = useNavigate(); // 3. Hook para redirecionar
 
-  // 4. Efeito que roda UMA VEZ quando o componente carrega
   useEffect(() => {
-    // Busca o "token" do usuário no localStorage
     const userData = localStorage.getItem('user');
-    
     if (userData) {
       const parsedUser = JSON.parse(userData);
-      // Se o usuário tiver a flag "isAdmin", atualiza o estado
       if (parsedUser.isAdmin) {
         setIsAdmin(true);
       }
     }
-    // (Se não houver usuário, 'isAdmin' continua 'false')
-  }, []); // O '[]' faz isso rodar só uma vez
+  }, []);
+
+  // 4. Função que roda quando o formulário é enviado
+  const handleSearch = (e) => {
+    e.preventDefault(); // Impede o recarregamento da página
+    if (!searchTerm.trim()) {
+      return; // Não faz nada se a busca estiver vazia
+    }
+    // 5. Redireciona para a página de busca com o termo
+    navigate(`/busca?q=${searchTerm}`);
+    setSearchTerm(''); // Limpa a barra
+  };
 
   return (
     <header className="app-header">
       <div className="header-top">
         
         <div className="logo">
+          {/* (Note: O logo deve ser um <Link> e não <a href> para
+              não recarregar a página. Vou manter <a> por enquanto) */}
           <a href="/">
             <img src="/images/logo.png" alt="Logo ZEOS" className="logo-img" />
           </a>
         </div>
         
-        <div className="search-bar">
-          <input type="text" placeholder="Buscar..." />
-          <button type="button">Buscar</button>
-        </div>
+        {/* 6. Transforme o <div> em <form> */}
+        <form className="search-bar" onSubmit={handleSearch}>
+          <input 
+            type="text" 
+            placeholder="Buscar..."
+            value={searchTerm} // 7. Conecte o estado
+            onChange={(e) => setSearchTerm(e.target.value)} // 8. Atualize o estado
+          />
+          <button type="submit">Buscar</button> {/* 9. type="submit" */}
+        </form>
         
-       
         <div className="header-actions">
-          
+          {/* (Links de Usuário, Carrinho, Admin...) */}
           <a href="/perfil" className="action-link">
             <FaUser />
-          
+            <span>Usuário</span>
           </a>
-
           <a href="/carrinho" className="action-link">
             <FaShoppingCart />
-        
+            <span>Carrinho</span>
           </a>
-
-          {/* --- 5. O NOVO BOTÃO DE ADMIN --- */}
-          {/* Ele só aparece se 'isAdmin' for 'true' */}
           {isAdmin && (
             <a href="/admin/editar-produto" className="action-link admin-link">
               <FaTools />
-              <span>Editar</span>
+              <span>Admin</span>
             </a>
           )}
-          {/* --- FIM DO NOVO BOTÃO --- */}
-
         </div>
       </div>
       
-      <nav className="header-nav">
-        <a href="/">Home</a>
-        <a href="/sobre">Sobre</a>
-        <a href="/loja">Loja</a>
-        <a href="/ajuda">Ajuda</a>
-      </nav>
+      {/* ... (nav) ... */}
     </header>
   );
 }

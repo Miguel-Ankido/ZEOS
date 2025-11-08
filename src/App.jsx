@@ -6,6 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 // === NÚCLEO ===
 import Header from './componentes/cabecalho/Header.jsx';
+import BuscaPage from './pages/Busca/index.jsx'
 import Home from './pages/Home/index.jsx';
 import Erro from './pages/Erro/index.jsx';
 import EsqueciSenhaPage from './pages/EsqueciSenha/index.jsx';
@@ -16,6 +17,7 @@ import Sobre from './pages/Sobre/index.jsx';
 import Ajuda from './pages/Ajuda/index.jsx';
 import ProdutoPage from './pages/Produto/index.jsx';
 import CarrinhoPage from './pages/Carrinho/index.jsx';
+
 
 // === AUTENTICAÇÃO ===
 import LoginPage from './pages/Login/index.jsx'; 
@@ -69,6 +71,7 @@ function App() {
         <Route path="/loja" element={<Loja />} />
         <Route path="/sobre" element={<Sobre />} />
         <Route path="/ajuda" element={<Ajuda />} />
+        <Route path="/busca" element={<BuscaPage />} />
         
         <Route path="/produto/:id" element={<ProdutoPage />} />
         <Route path="/carrinho" element={<CarrinhoPage />} />
