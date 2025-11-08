@@ -57,16 +57,13 @@ function Header() {
           {/* (Links de Usuário, Carrinho, Admin...) */}
           <a href="/perfil" className="action-link">
             <FaUser />
-            <span>Usuário</span>
           </a>
           <a href="/carrinho" className="action-link">
             <FaShoppingCart />
-            <span>Carrinho</span>
           </a>
           {isAdmin && (
             <a href="/admin/editar-produto" className="action-link admin-link">
               <FaTools />
-              <span>Admin</span>
             </a>
           )}
         </div>
