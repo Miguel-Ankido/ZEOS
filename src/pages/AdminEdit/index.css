@@ -1,0 +1,114 @@
+.admin-container {
+  width: 100%;
+  max-width: 1200px;
+  padding: 32px 16px;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+}
+
+.main-title {
+  font-size: 1.75rem;
+  color: #333;
+  font-weight: 600;
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.admin-content-box {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 30px 40px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Seletor do Dropdown */
+.product-selector {
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eee;
+}
+.product-selector label {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  display: block;
+}
+.product-selector select {
+  width: 100%;
+  padding: 12px;
+  font-size: 1.1rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+/* Formulário de Edição */
+.admin-form {
+  display: flex;
+  flex-wrap: wrap; /* Quebra em telas pequenas */
+  gap: 30px;
+}
+
+.form-column {
+  flex: 1; /* Ocupa metade da tela */
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-column label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #444;
+  margin-top: 15px;
+  margin-bottom: 6px;
+}
+
+.form-column input[type="text"],
+.form-column input[type="number"],
+.form-column textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+.form-column textarea {
+  resize: vertical; /* Permite redimensionar só na vertical */
+}
+
+.admin-save-button {
+  margin-top: auto; /* Empurra o botão para o final da coluna */
+  padding: 15px 20px;
+  background-color: #28a745; /* Verde */
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.admin-save-button:hover {
+  background-color: #218838;
+}
+/* ... (todo o seu CSS anterior) ... */
+
+/* Estilo para o link "Adicionar Novo" */
+.admin-nav-links {
+  margin-bottom: 20px;
+}
+
+.admin-nav-links a {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #007bff; /* Azul */
+  text-decoration: none;
+}
+.admin-nav-links a:hover {
+  text-decoration: underline;
+}

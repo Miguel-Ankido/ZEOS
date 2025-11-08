@@ -134,3 +134,15 @@
 .action-link svg {
   font-size: 1.5rem; /* Tamanho do ícone */
 }
+/* ... (todo o seu CSS anterior) ... */
+
+/* Estilo para o link de Admin (opcional) */
+.admin-link {
+  color: #d9534f; /* Um tom de vermelho */
+}
+.admin-link:visited {
+  color: #d9534f;
+}
+.admin-link:hover {
+  color: #c9302c; /* Vermelho mais escuro no hover */
+}

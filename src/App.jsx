@@ -8,6 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Header from './componentes/cabecalho/Header.jsx';
 import Home from './pages/Home/index.jsx';
 import Erro from './pages/Erro/index.jsx';
+import EsqueciSenhaPage from './pages/EsqueciSenha/index.jsx';
 
 // === PÁGINAS DO MENU ===
 import Loja from './pages/Loja/index.jsx';
@@ -26,6 +27,9 @@ import Perfil from './pages/Perfil/index.jsx';
 // (2. Corrigido o import de 'Chekout' para 'CheckoutPage')
 import CheckoutPage from './pages/Checkout/index.jsx'; 
 import Protecao from './componentes/Protecao/index.jsx';
+import AdminRoute from './componentes/AdminRoute.jsx';
+import AdminEditPage from './pages/AdminEdit/index.jsx';
+import AdminAddPage from './pages/AdminAdd/index.jsx';
 
 
 const AppLayout = () => {
@@ -72,6 +76,9 @@ function App() {
         {/* Rotas de Autenticação (do seu código) */}
         <Route path="/login" element={<LoginPage />} /> 
         <Route path="/cadastro" element={<CadastroPage />} /> 
+        <Route path="/esqueci-senha" element={<EsqueciSenhaPage />} /> 
+
+        
 
         {/* === ROTA PROTEGIDA === */}
         <Route 
@@ -82,6 +89,23 @@ function App() {
             </Protecao>
           } 
         />
+        <Route 
+          path="/admin/editar-produto" 
+          element={
+            <AdminRoute>
+              <AdminEditPage />
+            </AdminRoute>
+          } 
+        />
+        <Route 
+          path="/admin/adicionar-produto" 
+          element={
+            <AdminRoute>
+              <AdminAddPage />
+            </AdminRoute>
+          } 
+        />
+
         {/* (3. O <CheckoutPage /> agora está definido) */}
         <Route 
           path="/checkout" 
