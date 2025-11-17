@@ -23,7 +23,7 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
-/* Seletor do Dropdown */
+
 .product-selector {
   margin-bottom: 30px;
   padding-bottom: 20px;
@@ -43,15 +43,15 @@
   border: 1px solid #ccc;
 }
 
-/* Formulário de Edição */
+
 .admin-form {
   display: flex;
-  flex-wrap: wrap; /* Quebra em telas pequenas */
+  flex-wrap: wrap;
   gap: 30px;
 }
 
 .form-column {
-  flex: 1; /* Ocupa metade da tela */
+  flex: 1; 
   min-width: 300px;
   display: flex;
   flex-direction: column;
@@ -78,13 +78,13 @@
 }
 
 .form-column textarea {
-  resize: vertical; /* Permite redimensionar só na vertical */
+  resize: vertical; 
 }
 
 .admin-save-button {
-  margin-top: auto; /* Empurra o botão para o final da coluna */
+  margin-top: auto; 
   padding: 15px 20px;
-  background-color: #28a745; /* Verde */
+  background-color: #28a745; 
   color: #fff;
   border: none;
   border-radius: 6px;
@@ -96,9 +96,7 @@
 .admin-save-button:hover {
   background-color: #218838;
 }
-/* ... (todo o seu CSS anterior) ... */
 
-/* Estilo para o link "Adicionar Novo" */
 .admin-nav-links {
   margin-bottom: 20px;
 }
@@ -106,9 +104,26 @@
 .admin-nav-links a {
   font-size: 1.1rem;
   font-weight: 600;
-  color: #007bff; /* Azul */
+  color: #007bff; 
   text-decoration: none;
 }
 .admin-nav-links a:hover {
   text-decoration: underline;
+}
+.admin-delete-button {
+  background-color: #d9534f; 
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-top: 15px;
+  width: 100%; 
+}
+
+.admin-delete-button:hover {
+  background-color: #c9302c; 
 }

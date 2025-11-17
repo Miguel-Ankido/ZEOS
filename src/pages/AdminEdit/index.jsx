@@ -1,19 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom'; // 1. Importe o Link
+import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import './index.css';
 
 function AdminEditPage() {
-  const [allProducts, setAllProducts] = useState([]); // Lista para o dropdown
-  const [selectedProductId, setSelectedProductId] = useState(''); // ID do produto a editar
-  
-  // O estado do formulário (todos os campos do produto)
-  const [formData, setFormData] = useState(null); // Começa como null
+  const [allProducts, setAllProducts] = useState([]);
+  const [selectedProductId, setSelectedProductId] = useState('');
+  const [formData, setFormData] = useState(null);
 
-  // !! IMPORTANTE !! Troque pela URL da sua API no Render
   const API_URL = 'https://api-1-6p1t.onrender.com';
 
-  // 1. Busca TODOS os produtos (só uma vez, para o dropdown)
+  // 1. Busca TODOS os produtos (para o dropdown)
   useEffect(() => {
     const fetchAllProducts = async () => {
       try {
@@ -28,13 +25,12 @@ function AdminEditPage() {
     fetchAllProducts();
   }, []);
 
-  // 2. Quando o admin SELECIONA um produto no dropdown...
+  // 2. Quando o admin SELECIONA um produto...
   useEffect(() => {
     if (!selectedProductId) {
-      setFormData(null); // Limpa o formulário se nada estiver selecionado
+      setFormData(null); 
       return;
     }
-    // Encontra o produto na lista e preenche o formulário
     const productToEdit = allProducts.find(p => p.id === selectedProductId);
     if (productToEdit) {
       setFormData(productToEdit);
@@ -57,13 +53,10 @@ function AdminEditPage() {
       toast.warn('Selecione um produto para editar.');
       return;
     }
-
     try {
       const response = await fetch(`${API_URL}/produtos/${selectedProductId}`, {
         method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       });
 
@@ -82,13 +75,50 @@ function AdminEditPage() {
     }
   };
 
+  // 5. Função para EXCLUIR o produto (DELETE)
+  const handleDelete = async () => {
+    if (!selectedProductId) {
+      toast.warn('Selecione um produto para excluir.');
+      return;
+    }
+
+    const productName = formData.name || 'o produto selecionado';
+
+    // 1. Pedir confirmação
+    if (!window.confirm(`Tem certeza que deseja excluir "${productName}"? Esta ação não pode ser desfeita.`)) {
+      return; // Usuário clicou em "Cancelar"
+    }
+
+    // 2. Tentar a exclusão
+    try {
+      const response = await fetch(`${API_URL}/produtos/${selectedProductId}`, {
+        method: 'DELETE',
+      });
+
+      if (response.ok) {
+        toast.success('Produto excluído com sucesso!');
+        
+        // 3. Atualizar o estado local
+        setAllProducts(prevProducts => 
+          prevProducts.filter(p => p.id !== selectedProductId)
+        );
+        setFormData(null);
+        setSelectedProductId('');
+
+      } else {
+        throw new Error('Falha ao excluir o produto');
+      }
+    } catch (error) {
+      toast.error('Erro ao excluir: ' + error.message);
+    }
+  };
+
+
   return (
     <div className="admin-container">
       <h1 className="main-title">Alterar Informações do Produto</h1>
-
       <div className="admin-content-box">
         
-        {/* --- ESTA PARTE ESTAVA FALTANDO --- */}
         <div className="admin-nav-links">
           <Link to="/admin/adicionar-produto">
             + Adicionar Novo Produto
@@ -111,52 +141,61 @@ function AdminEditPage() {
             ))}
           </select>
         </div>
-        {/* --- FIM DA PARTE QUE FALTAVA --- */}
-
 
         {/* FORMULÁRIO DE EDIÇÃO (só aparece se um produto for selecionado) */}
         {formData && (
-          <form className="admin-form" onSubmit={handleSubmit}>
-            
-            <div className="form-column">
-              <label>Nome do Produto</label>
-              <input type="text" name="name" value={formData.name} onChange={handleFormChange} />
+          <>
+            <form className="admin-form" onSubmit={handleSubmit}>
               
-              <label>Preço Antigo (Ex: 239,99 ou deixe null)</label>
-              <input type="text" name="oldPrice" value={formData.oldPrice || ''} onChange={handleFormChange} />
-              
-              <label>Preço Atual (Ex: 159,90)</label>
-              <input type="text" name="price" value={formData.price} onChange={handleFormChange} />
+              <div className="form-column">
+                <label>Nome do Produto</label>
+                <input type="text" name="name" value={formData.name} onChange={handleFormChange} />
+                
+                <label>Preço Antigo (Ex: 239,99 ou deixe null)</label>
+                <input type="text" name="oldPrice" value={formData.oldPrice || ''} onChange={handleFormChange} />
+                
+                <label>Preço Atual (Ex: 159,90)</label>
+                <input type="text" name="price" value={formData.price} onChange={handleFormChange} />
 
-              <label>Estoque (Número)</label>
-              <input type="number" name="estoque" value={formData.estoque} onChange={handleFormChange} />
-              
-              <label>SKU (Ex: z001)</label>
-              <input type="text" name="sku" value={formData.sku} onChange={handleFormChange} />
+                <label>Estoque (Número)</label>
+                <input type="number" name="estoque" value={formData.estoque} onChange={handleFormChange} />
+                
+                <label>SKU (Ex: z001)</label>
+                <input type="text" name="sku" value={formData.sku} onChange={handleFormChange} />
 
-              <label>Categoria (Ex: CAMISAS)</label>
-              <input type="text" name="categoria" value={formData.categoria} onChange={handleFormChange} />
-              
-              <label>Caminho da Imagem (Ex: /images/camisa.png)</label>
-              <input type="text" name="image" value={formData.image} onChange={handleFormChange} />
-            </div>
+                <label>Categoria (Ex: CAMISAS)</label>
+                <input type="text" name="categoria" value={formData.categoria} onChange={handleFormChange} />
+                
+                <label>Caminho da Imagem (Ex: /images/camisa.png)</label>
+                <input type="text" name="image" value={formData.image} onChange={handleFormChange} />
+              </div>
 
-            <div className="form-column">
-              <label>Descrição Curta</label>
-              <textarea name="descricao_curta" value={formData.descricao_curta} onChange={handleFormChange} rows="5"></textarea>
+              <div className="form-column">
+                <label>Descrição Curta</label>
+                <textarea name="descricao_curta" value={formData.descricao_curta} onChange={handleFormChange} rows="5"></textarea>
 
-              <label>Descrição Completa (Longa)</label>
-              <textarea name="descricao_longa" value={formData.descricao_longa} onChange={handleFormChange} rows="10"></textarea>
+                <label>Descrição Completa (Longa)</label>
+                <textarea name="descricao_longa" value={formData.descricao_longa} onChange={handleFormChange} rows="10"></textarea>
 
-              <label>Material (Ex: 100% Algodão)</label>
-              <input type="text" name="material" value={formData.material} onChange={handleFormChange} />
+                <label>Material (Ex: 100% Algodão)</label>
+                <input type="text" name="material" value={formData.material} onChange={handleFormChange} />
 
-              <button type="submit" className="admin-save-button">
-                Salvar Alterações
-              </button>
-            </div>
+                <button type="submit" className="admin-save-button">
+                  Salvar Alterações
+                </button>
+              </div>
 
-          </form>
+            </form>
+
+            {/* --- BOTÃO DE EXCLUIR --- */}
+            <button 
+              type="button" 
+              className="admin-delete-button" 
+              onClick={handleDelete}
+            >
+              Excluir Produto
+            </button>
+          </>
         )}
       </div>
     </div>

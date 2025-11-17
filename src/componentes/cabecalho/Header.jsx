@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, Link } from 'react-router-dom'; // 1. Importe o useNavigate
+import { useNavigate, Link } from 'react-router-dom'; 
 import './Header.css';
 import { FaUser, FaShoppingCart, FaTools } from 'react-icons/fa';
 
 function Header() {
   const [isAdmin, setIsAdmin] = useState(false);
-  // 2. Estado para controlar o que o usuário digita
+ 
   const [searchTerm, setSearchTerm] = useState('');
-  const navigate = useNavigate(); // 3. Hook para redirecionar
+  const navigate = useNavigate(); 
 
   useEffect(() => {
     const userData = localStorage.getItem('user');
@@ -69,7 +69,14 @@ function Header() {
         </div>
       </div>
       
-      {/* ... (nav) ... */}
+   <nav className="header-nav">
+        <Link to="/">Home</Link>
+        <Link to="/sobre">Sobre</Link>
+        <Link to="/loja">Loja</Link>
+        <Link to="/ajuda">Ajuda</Link>
+
+      </nav>
+
     </header>
   );
 }
