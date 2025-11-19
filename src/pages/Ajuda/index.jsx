@@ -9,7 +9,7 @@ function AjudaPage() {
       <div className="ajuda-content">
         <h2 className="section-title">Perguntas Frequentes</h2>
 
-        {/* Pergunta 1 */}
+       
         <details className="faq-item">
           <summary className="faq-question">
             Como faço para rastrear meu pedido?
@@ -19,17 +19,17 @@ function AjudaPage() {
           </div>
         </details>
 
-        {/* Pergunta 2 */}
+        
         <details className="faq-item">
           <summary className="faq-question">
             Esqueci minha senha, e agora?
           </summary>
           <div className="faq-answer">
-            <p>Não se preocupe! Na página de <a href="/minha-conta">Login</a>, clique no link "Esqueceu sua senha?" e siga as instruções. Enviaremos um link para seu e-mail para que você possa criar uma nova.</p>
+            <p>Não se preocupe! Na página de <a href="/perfil">Login</a>, clique no link "Esqueceu sua senha?" e siga as instruções. Enviaremos um link para seu e-mail para que você possa criar uma nova.</p>
           </div>
         </details>
 
-        {/* Pergunta 3 */}
+       
         <details className="faq-item">
           <summary className="faq-question">
             Quais formas de pagamento são aceitas?
@@ -39,7 +39,7 @@ function AjudaPage() {
           </div>
         </details>
 
-        {/* Pergunta 4 */}
+     
         <details className="faq-item">
           <summary className="faq-question">
             Como funciona a política de troca?

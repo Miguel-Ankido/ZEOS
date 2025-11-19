@@ -5,7 +5,6 @@ import { FaUser, FaShoppingCart, FaTools } from 'react-icons/fa';
 
 function Header() {
   const [isAdmin, setIsAdmin] = useState(false);
- 
   const [searchTerm, setSearchTerm] = useState('');
   const navigate = useNavigate(); 
 
@@ -19,42 +18,36 @@ function Header() {
     }
   }, []);
 
-  // 4. Função que roda quando o formulário é enviado
   const handleSearch = (e) => {
-    e.preventDefault(); // Impede o recarregamento da página
-    if (!searchTerm.trim()) {
-      return; // Não faz nada se a busca estiver vazia
-    }
-    // 5. Redireciona para a página de busca com o termo
+    e.preventDefault();
+    if (!searchTerm.trim()) return;
+
     navigate(`/busca?q=${searchTerm}`);
-    setSearchTerm(''); // Limpa a barra
+    setSearchTerm('');
   };
 
   return (
     <header className="app-header">
+
       <div className="header-top">
         
         <div className="logo">
-          {/* (Note: O logo deve ser um <Link> e não <a href> para
-              não recarregar a página. Vou manter <a> por enquanto) */}
           <a href="/">
             <img src="/images/logo.png" alt="Logo ZEOS" className="logo-img" />
           </a>
         </div>
-        
-        {/* 6. Transforme o <div> em <form> */}
+
         <form className="search-bar" onSubmit={handleSearch}>
           <input 
             type="text" 
             placeholder="Buscar..."
-            value={searchTerm} // 7. Conecte o estado
-            onChange={(e) => setSearchTerm(e.target.value)} // 8. Atualize o estado
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
           />
-          <button type="submit">Buscar</button> {/* 9. type="submit" */}
+          <button type="submit">Buscar</button>
         </form>
         
         <div className="header-actions">
-          {/* (Links de Usuário, Carrinho, Admin...) */}
           <a href="/perfil" className="action-link">
             <FaUser />
           </a>
@@ -69,12 +62,11 @@ function Header() {
         </div>
       </div>
       
-   <nav className="header-nav">
+      <nav className="header-nav">
         <Link to="/">Home</Link>
         <Link to="/sobre">Sobre</Link>
         <Link to="/loja">Loja</Link>
         <Link to="/ajuda">Ajuda</Link>
-
       </nav>
 
     </header>
